@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
     df = pd.concat(results, ignore_index=True).reset_index(drop=True)
     df.to_csv(OUTPUT_FILE, mode='a', index=False, header=not FILE_CHECK)
-    print(df.columns)
+
     output_cols = ['title', 'company', 
                    'location', 'job_url',
                    'job_url_direct', 'search_term',

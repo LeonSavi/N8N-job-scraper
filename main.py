@@ -66,6 +66,7 @@ if __name__ == '__main__':
             scraper = JobAnalyzer(configs)
             out = scraper.scrape_jobs()
             out['ref_country'] = curr_country
+            out['search_term'] = curr_search_term
             results.append(out)
             sleep(random.randint(5,15))
 
@@ -75,12 +76,11 @@ if __name__ == '__main__':
 
     df = pd.concat(results, ignore_index=True).reset_index(drop=True)
     df.to_csv(OUTPUT_FILE, mode='a', index=False, header=not FILE_CHECK)
-
+    print(df.columns)
     output_cols = ['title', 'company', 
                    'location', 'job_url',
                    'job_url_direct', 'search_term',
-                   'description', 'ref_country', 
-                   'job_type', 'date_posted',
+                   'description', 'ref_country', 'date_posted',
                    'lang_descr']
     
     available_cols = [c for c in output_cols if c in df.columns]

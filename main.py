@@ -74,7 +74,7 @@ if __name__ == '__main__':
         print(json.dumps([]))
         sys.exit(0)
 
-    df = pd.concat(results, ignore_index=True).reset_index(drop=True)
+    df = pd.concat(results.fillna(''), ignore_index=True).reset_index(drop=True)
     df.to_csv(OUTPUT_FILE, mode='a', index=False, header=not FILE_CHECK)
 
     output_cols = ['title', 'company', 

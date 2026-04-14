@@ -13,7 +13,7 @@ from utils.helper_functions import clean_description, parse_locations
 parser = argparse.ArgumentParser()
 parser.add_argument('--countries', default='netherlands,belgium,germany,italy')
 parser.add_argument('--search_term', default='data scientist,data engineer')
-parser.add_argument('--locations',default='amsterdam (netherlands), utrecht (netherlands), berlin (germany)')
+parser.add_argument('--locations',default='')
 parser.add_argument('--n_results', type=int, default=50)
 parser.add_argument('--hours_old', type=int, default=24)
 parser.add_argument('--chat_id', default='default')

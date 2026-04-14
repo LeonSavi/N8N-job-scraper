@@ -27,7 +27,8 @@ class JobAnalyzer():
             results_wanted=self.n_results,
             hours_old=self.hours_old,
             country_indeed=self.country,
-            proxies=["localhost"] + self.proxies,
+            location=self.location,
+            proxies=["localhost"] + self.proxies
         )
 
         jobs['scrape_time'] = pd.Timestamp.now().strftime("%d-%m-%Y")

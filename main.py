@@ -7,7 +7,7 @@ from scripts.scraper_analyzer import JobAnalyzer
 import argparse
 import sys
 import random
-from utils.helper_functions import clean_description, parse_locations
+from utils.helper_functions import clean_description, parse_locations, escape_markdown
 
 
 parser = argparse.ArgumentParser()
@@ -84,6 +84,10 @@ if __name__ == '__main__':
         .dropna(subset=['job_url'])
         .drop_duplicates(subset=['job_url'])
     )
+
+    if 'title' in clean.columns:
+        clean = clean.copy()
+        clean['title'] = clean['title'].apply(escape_markdown)
 
     if 'description' in clean.columns:
         clean = clean.copy()

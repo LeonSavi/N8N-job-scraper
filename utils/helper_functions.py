@@ -24,10 +24,12 @@ def parse_locations(location_str: str, all_countries:str) -> dict:
 
 
 def escape_markdown(text: str) -> str:
-    "for MarkdownV2 in n8n"
+    "for Markdown in n8n"
     if not isinstance(text, str):
         return ''
-    return re.sub(r'([_*[\]()~`>#+\-=|{}.!\\])', r'\\\1', text)
+    text = re.sub(r'[_*`\[]', '', text)
+    text = re.sub(r'\s{2,}', ' ', text)
+    return text.strip()
 
 
 def clean_description(text: str, max_len: int = 400) -> str:
